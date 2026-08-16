@@ -1,120 +1,5 @@
-// import React, { useState } from 'react';
-// import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-// import Modal from './Modal';
-
-// const posts = [
-//   {
-//     title: "Exploring React.js",
-//     date: "2025-01-15",
-//     excerpt: "React.js is a powerful JavaScript library for building dynamic user interfaces. In this post, we explore its core concepts and best practices...",
-//     content: "React.js is a powerful JavaScript library for building dynamic user interfaces. In this post, we explore its core concepts and best practices. We'll cover components, state management, hooks, and more. React.js allows developers to create large web applications that can update and render efficiently in response to data changes. By using React.js, you can ensure that your application is scalable, maintainable, and performant."
-//   },
-//   {
-//     title: "Getting Started with Next.js",
-//     date: "2025-01-25",
-//     excerpt: "Next.js offers a great developer experience with features like server-side rendering and static site generation. Learn how to get started with Next.js...",
-//     content: "Next.js offers a great developer experience with features like server-side rendering and static site generation. Learn how to get started with Next.js in this comprehensive guide. We'll cover setting up a new project, creating pages and components, fetching data, and deploying your application. Next.js makes it easy to build fast, SEO-friendly websites with React, and it's a powerful tool for any developer's toolkit."
-//   },
-//   {
-//     title: "JavaScript Tips and Tricks",
-//     date: "2025-02-01",
-//     excerpt: "Enhance your JavaScript skills with these useful tips and tricks. From ES6 features to debugging techniques, we've got you covered...",
-//     content: "Enhance your JavaScript skills with these useful tips and tricks. From ES6 features to debugging techniques, we've got you covered. In this post, we'll share some of our favorite JavaScript tips and tricks that can help you write cleaner, more efficient code. Whether you're a beginner or an experienced developer, you'll find something useful in this list."
-//   }
-// ];
-
-// const PostCard = ({ title, date, excerpt, content }) => {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   const openModal = () => setIsModalOpen(true);
-//   const closeModal = () => setIsModalOpen(false);
-
-//   return (
-//     <>
-//       <Card className="w-full transition-all duration-300 border-0 shadow-lg backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 hover:shadow-xl">
-//         <CardHeader className="border-b border-gray-100 dark:border-gray-700">
-//           <CardTitle className="text-xl font-bold text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text">
-//             {title}
-//           </CardTitle>
-//         </CardHeader>
-//         <CardContent className="p-6">
-//           <div className="mb-4 text-sm text-gray-600 dark:text-gray-300">{date}</div>
-//           <p className="mb-4 text-gray-700 dark:text-gray-300">{excerpt}</p>
-//           <button
-//             onClick={openModal}
-//             className="text-violet-600 hover:text-violet-800 dark:text-violet-400 dark:hover:text-violet-600"
-//           >
-//             Read more
-//           </button>
-//         </CardContent>
-//       </Card>
-//       {isModalOpen && (
-//         <Modal onClose={closeModal}>
-//           <div className="p-6">
-//             <h2 className="mb-4 text-2xl font-bold text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text">
-//               {title}
-//             </h2>
-//             <div className="mb-4 text-sm text-gray-600 dark:text-gray-300">{date}</div>
-//             <p className="text-gray-700 dark:text-gray-300">{content}</p>
-//           </div>
-//         </Modal>
-//       )}
-//     </>
-//   );
-// };
-
-// const Blog = () => {
-//   return (
-//     <div className="relative min-h-screen p-6 transition-colors duration-500 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
-//       <div className="relative max-w-6xl mx-auto ">
-//         <div className="mb-12 text-center">
-//           <h1 className="mb-4 text-4xl font-bold text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text animate-gradient">
-//             <span className="inline-block mr-2 align-middle">📝</span> 
-//             My Blog
-//           </h1>
-//           <p className="text-gray-600 dark:text-gray-300">
-//             Sharing my knowledge and experiences in web development
-//           </p>
-//         </div>
-        
-//         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-//           {posts.map((post, idx) => (
-//             <PostCard
-//               key={idx}
-//               title={post.title}
-//               date={post.date}
-//               excerpt={post.excerpt}
-//               content={post.content}
-//             />
-//           ))}
-//         </div>
-//       </div>
-
-//       <style jsx>{`
-//         @keyframes gradientMove {
-//           0%, 100% { background-position: 0% 50%; }
-//           50% { background-position: 100% 50%; }
-//         }
-
-//         .animate-gradient {
-//           background-size: 200% auto;
-//           animation: gradientMove 8s ease infinite;
-//         }
-//       `}</style>
-//     </div>
-//   );
-// };
-
-// export default Blog;
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import Modal from './Modal';
 
@@ -147,37 +32,27 @@ const posts = [
 
 const PostCard = ({ title, date, excerpt, content }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   return (
     <>
-      <Card className="w-full transition-all duration-300 border-0 shadow-lg backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 hover:shadow-xl">
-        <CardHeader className="border-b border-gray-100 dark:border-gray-700">
-          <CardTitle className="text-xl font-bold text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text">
-            {title}
-          </CardTitle>
+      <Card className="w-full h-full border border-omni/20 bg-black/50 hover:border-omni/60 hover:shadow-glow transition-all duration-300">
+        <CardHeader className="border-b border-omni/15">
+          <CardTitle className="text-xl font-display font-bold text-omni">{title}</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="mb-4 text-sm text-gray-600 dark:text-gray-300">{date}</div>
-          <p className="mb-4 text-gray-700 dark:text-gray-300">{excerpt}</p>
-          <button
-            onClick={openModal}
-            className="text-violet-600 hover:text-violet-800 dark:text-violet-400 dark:hover:text-violet-600"
-          >
-            Read more
-          </button>
+          <div className="mb-4 text-sm text-emerald-100/40 font-mono">{date}</div>
+          <p className="mb-4 text-emerald-100/70">{excerpt}</p>
+          <button onClick={openModal} className="text-omni hover:text-omni-bright transition-colors font-display font-semibold">Read more →</button>
         </CardContent>
       </Card>
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <div className="p-6">
-            <h2 className="mb-4 text-2xl font-bold text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text">
-              {title}
-            </h2>
-            <div className="mb-4 text-sm text-gray-600 dark:text-gray-300">{date}</div>
-            <p className="text-gray-700 dark:text-gray-300 whitespace-pre-line">{content}</p>
+            <h2 className="mb-4 text-2xl font-display font-bold text-omni">{title}</h2>
+            <div className="mb-4 text-sm text-emerald-100/40 font-mono">{date}</div>
+            <p className="text-emerald-100/70 whitespace-pre-line">{content}</p>
           </div>
         </Modal>
       )}
@@ -186,43 +61,27 @@ const PostCard = ({ title, date, excerpt, content }) => {
 };
 
 const Blog = () => {
+  const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
+
   return (
-    <div className="relative min-h-screen p-6 transition-colors duration-500 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+    <div className="relative min-h-screen p-6 bg-black grid-bg">
       <div className="relative max-w-6xl mx-auto">
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-transparent bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text animate-gradient">
-            <span className="inline-block mr-2 align-middle">📱</span> 
-            My iOS Blog
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300">
-            Sharing my iOS projects, backend work, and what inspires me
-          </p>
-        </div>
-        
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={fadeUp} className="mb-12 text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-display tracking-[0.2em] uppercase rounded-full border border-omni/40 bg-black/40 text-omni/90">
+            <span className="w-1.5 h-1.5 rounded-full bg-omni animate-pulse" /> Data Log
+          </div>
+          <h1 className="mb-4 text-4xl font-display font-bold text-white text-glow">My iOS Blog</h1>
+          <p className="text-emerald-100/60">Sharing my iOS projects, backend work, and what inspires me</p>
+        </motion.div>
+
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, idx) => (
-            <PostCard
-              key={idx}
-              title={post.title}
-              date={post.date}
-              excerpt={post.excerpt}
-              content={post.content}
-            />
+            <motion.div key={idx} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} transition={{ delay: idx * 0.08 }}>
+              <PostCard title={post.title} date={post.date} excerpt={post.excerpt} content={post.content} />
+            </motion.div>
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes gradientMove {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradientMove 8s ease infinite;
-        }
-      `}</style>
     </div>
   );
 };
