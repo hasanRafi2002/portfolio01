@@ -6,23 +6,23 @@ import {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('darkMode') !== 'false');
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') !== 'light');
   const [activeSection, setActiveSection] = useState('home');
 
   const handleDarkModeToggle = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
-    document.documentElement.classList.toggle('dark', newDarkMode);
-    localStorage.setItem('darkMode', newDarkMode);
+    document.documentElement.classList.toggle('light', !newDarkMode);
+    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
   };
 
   const NavButton = ({ children, onClick, className }) => {
-    const base = "relative p-2.5 rounded-lg transition-all duration-300 bg-black/40 hover:bg-omni/10 border border-omni/25 hover:border-omni/70 shadow-[0_0_8px_rgba(57,255,20,0.15)] hover:shadow-glow active:scale-95 backdrop-blur-sm";
+    const base = "glass glass-hover relative p-2.5 rounded-xl transition-all duration-300 active:scale-95";
     return <button onClick={onClick} className={base + " " + (className || "")}>{children}</button>;
   };
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
+    document.documentElement.classList.toggle('light', !darkMode);
   }, [darkMode]);
 
   const navLinks = [
@@ -54,10 +54,10 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const drawerClass = "fixed inset-y-0 right-0 w-72 bg-black/90 backdrop-blur-md border-l border-omni/30 shadow-[-10px_0_40px_rgba(0,0,0,0.6)] transform transition-all duration-500 ease-out z-50 grid-bg " + (isOpen ? "translate-x-0" : "translate-x-full");
+  const drawerClass = "glass-strong fixed inset-y-0 right-0 w-72 border-l border-white/10 transform transition-all duration-500 ease-out z-50 grid-bg " + (isOpen ? "translate-x-0" : "translate-x-full");
 
   return (
-    <div className='fixed top-0 right-0 z-[100] flex flex-col items-center justify-center w-full gap-6 md:h-screen bg-black/60 backdrop-blur-md border-l border-omni/20 md:w-16'>
+    <div className='glass-nav fixed top-0 right-0 z-[100] flex flex-col items-center justify-center w-full gap-6 md:h-screen border-l border-white/10 md:w-16'>
       <div className="flex flex-col items-center gap-6 mt-4">
         <NavButton onClick={handleDarkModeToggle} className="group overflow-hidden">
           {darkMode ? <Sun size={22} className="transition-transform duration-500 text-omni group-hover:rotate-180 drop-shadow-[0_0_6px_rgba(57,255,20,0.8)]" /> : <Moon size={22} className="transition-transform duration-500 text-omni/70 group-hover:-rotate-180" />}

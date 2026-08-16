@@ -30,7 +30,7 @@ const Sidebar = () => {
     </div>
   );
 
-  const asideClass = "fixed top-12 md:top-0 left-0 h-screen w-72 bg-black/85 backdrop-blur-md grid-bg border-r border-omni/25 transform transition-all duration-500 ease-out z-40 flex flex-col shadow-[10px_0_40px_rgba(0,0,0,0.6)] md:translate-x-0 " + (isOpen ? "translate-x-0" : "-translate-x-full");
+  const asideClass = "glass-strong fixed top-12 md:top-0 left-0 h-screen w-72 grid-bg border-r border-white/10 transform transition-all duration-500 ease-out z-40 flex flex-col md:translate-x-0 " + (isOpen ? "translate-x-0" : "-translate-x-full");
   const mailHref = "https://mail.google.com/mail/?view=cm&to=rafi2002ten@gmail.com";
 
   return (
@@ -58,7 +58,7 @@ const Sidebar = () => {
         </div>
 
         <div className="flex-1 p-4 space-y-4 overflow-y-auto">
-          <div className="p-3 rounded-lg bg-black/40 border border-omni/15 hud-corners relative">
+          <div className="glass p-3 rounded-xl hud-corners relative">
             <h3 className="flex items-center gap-2 text-xs font-display font-semibold tracking-widest uppercase text-omni/80"><Phone size={13} className="text-omni" /> Contact Info</h3>
             <div className="mt-2 space-y-1">
               <a href={mailHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-1.5 text-sm text-emerald-100/70 transition rounded-md hover:bg-omni/10 hover:text-omni">
@@ -71,10 +71,10 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-black/40 border border-omni/15">
+          <div className="glass p-3 rounded-xl">
             <h3 className="flex items-center gap-2 text-xs font-display font-semibold tracking-widest uppercase text-omni/80"><GraduationCap size={13} className="text-omni" /> Education</h3>
             <div className="mt-2 space-y-2">
-              <div className="p-2 text-sm bg-black/40 rounded-md border border-omni/10">
+              <div className="glass-subtle p-2 text-sm rounded-lg">
                 <p className="font-medium text-emerald-50">BSc in Software Engineering</p>
                 <p className="mt-1 text-emerald-100/60">Daffodil International University</p>
                 <p className="text-emerald-100/40">2024 - 2028</p>
@@ -82,7 +82,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-black/40 border border-omni/15">
+          <div className="glass p-3 rounded-xl">
             <h3 className="flex items-center gap-2 text-xs font-display font-semibold tracking-widest uppercase text-omni/80"><Code2 size={13} className="text-omni" /> Languages</h3>
             <div className="mt-2 space-y-2">
               {skills.languages.map((skill, index) => (
@@ -97,7 +97,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-black/40 border border-omni/15">
+          <div className="glass p-3 rounded-xl">
             <h3 className="flex items-center gap-2 text-xs font-display font-semibold tracking-widest uppercase text-omni/80"><Brain size={13} className="text-omni" /> Technologies</h3>
             <div className="mt-2 space-y-2">
               {skills.tech.map((skill, index) => (
@@ -112,7 +112,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-black/40 border border-omni/15">
+          <div className="glass p-3 rounded-xl">
             <h3 className="flex items-center gap-2 text-xs font-display font-semibold tracking-widest uppercase text-omni/80"><FileText size={13} className="text-omni" /> Resume</h3>
             <a href="https://drive.google.com/file/d/1vm7-CmGXOSiyxVyuOBGNAo44jMVOPXsu/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="neon-btn flex items-center justify-center gap-2 px-3 py-2 mt-2 text-sm font-semibold rounded-md font-display">
               <FileText size={14} /> Download Resume
@@ -120,7 +120,7 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <div className="p-4 border-t border-omni/20 bg-black/40">
+        <div className="glass-subtle p-4 border-t border-white/10">
           <div className="flex justify-center gap-3 mb-3">
             <a href="https://github.com/hasanRafi2002" target="_blank" rel="noopener noreferrer" className="p-2 transition bg-black/50 rounded-md border border-omni/20 hover:border-omni hover:text-omni"><Github size={16} className="text-emerald-100/70" /></a>
             <a href="https://www.linkedin.com/in/serock01/" target="_blank" rel="noopener noreferrer" className="p-2 transition bg-black/50 rounded-md border border-omni/20 hover:border-omni hover:text-omni"><Linkedin size={16} className="text-emerald-100/70" /></a>

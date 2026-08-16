@@ -58,7 +58,7 @@ const IOSProjectDetails = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="flex items-center justify-center min-h-screen bg-[var(--bg-primary)]">
         <div className="w-12 h-12 border-4 border-omni/30 rounded-full border-t-omni animate-spin shadow-glow" />
       </div>
     );
@@ -66,7 +66,7 @@ const IOSProjectDetails = () => {
 
   if (!project) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[var(--bg-primary)]">
         <h1 className="text-3xl font-display font-bold text-white">Project Not Found</h1>
         <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-lg text-omni border border-omni/30 bg-black/40 hover:border-omni hover:shadow-glow-sm transition-all duration-300">
           <ArrowLeft className="w-4 h-4" /> Go Back
@@ -76,7 +76,7 @@ const IOSProjectDetails = () => {
   }
 
   return (
-    <div className="min-h-screen px-4 py-10 bg-black grid-bg">
+    <div className="min-h-screen px-4 py-10 bg-[var(--bg-primary)] grid-bg">
       <div className="max-w-6xl mx-auto">
         <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-lg text-omni border border-omni/30 bg-black/40 hover:border-omni hover:shadow-glow-sm transition-all duration-300">
           <ArrowLeft className="w-4 h-4" /> Go Back
@@ -86,31 +86,31 @@ const IOSProjectDetails = () => {
           <img src={project.screenshots[0]} alt={project.title} className="object-cover w-full h-64 md:h-96" />
         </div>
 
-        <h1 className="mt-6 text-3xl font-display font-bold text-white text-glow md:text-4xl">{project.title}</h1>
-        <p className="mt-2 text-emerald-100/60">{project.shortDescription}</p>
+        <h1 className="mt-6 text-3xl font-display font-bold text-[var(--text-primary)] text-glow md:text-4xl">{project.title}</h1>
+        <p className="mt-2 text-[var(--text-secondary)]">{project.shortDescription}</p>
 
         <div className="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-3">
-          <Card className="bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-            <CardContent className="flex items-center gap-3 p-4"><Clock className="text-omni" /><span className="text-emerald-100/80">{project.duration}</span></CardContent>
+          <Card>
+            <CardContent className="flex items-center gap-3 p-4"><Clock className="text-omni" /><span className="text-[var(--text-secondary)]">{project.duration}</span></CardContent>
           </Card>
-          <Card className="bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-            <CardContent className="flex items-center gap-3 p-4"><CheckCircle className="text-omni" /><span className="text-emerald-100/80">{project.status}</span></CardContent>
+          <Card>
+            <CardContent className="flex items-center gap-3 p-4"><CheckCircle className="text-omni" /><span className="text-[var(--text-secondary)]">{project.status}</span></CardContent>
           </Card>
-          <Card className="bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-            <CardContent className="flex items-center gap-3 p-4"><Calendar className="text-omni" /><span className="text-emerald-100/80">{new Date(project.lastUpdate).toLocaleDateString()}</span></CardContent>
+          <Card>
+            <CardContent className="flex items-center gap-3 p-4"><Calendar className="text-omni" /><span className="text-[var(--text-secondary)]">{new Date(project.lastUpdate).toLocaleDateString()}</span></CardContent>
           </Card>
         </div>
 
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-10">
-          <h2 className="text-2xl font-display font-bold text-white">Overview</h2>
-          <p className="mt-3 text-emerald-100/60">{project.longDescription}</p>
+          <h2 className="text-2xl font-display font-bold text-[var(--text-primary)]">Overview</h2>
+          <p className="mt-3 text-[var(--text-secondary)]">{project.longDescription}</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-10">
-          <h2 className="text-2xl font-display font-bold text-white">Key Features</h2>
+          <h2 className="text-2xl font-display font-bold text-[var(--text-primary)]">Key Features</h2>
           <ul className="grid gap-3 mt-4 md:grid-cols-2">
             {project.features.map((f, i) => (
-              <li key={i} className="flex items-start gap-2 text-emerald-100/70">
+              <li key={i} className="flex items-start gap-2 text-[var(--text-secondary)]">
                 <CheckCircle className="w-5 h-5 mt-1 text-omni" /> {f}
               </li>
             ))}
@@ -118,7 +118,7 @@ const IOSProjectDetails = () => {
         </motion.div>
 
         <div className="mt-10">
-          <h2 className="text-2xl font-display font-bold text-white">Tech Stack</h2>
+          <h2 className="text-2xl font-display font-bold text-[var(--text-primary)]">Tech Stack</h2>
           <div className="flex flex-wrap gap-2 mt-3">
             {project.tech.map((t, i) => (
               <span key={i} className="px-3 py-1 text-sm rounded-full border border-omni/25 text-omni/90 bg-omni/5">{t}</span>

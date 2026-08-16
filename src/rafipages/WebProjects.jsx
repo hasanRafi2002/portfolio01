@@ -49,14 +49,14 @@ const WebProjects = () => {
   const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 
   return (
-    <div className="min-h-screen bg-black grid-bg p-6">
+    <div className="min-h-screen bg-[var(--bg-primary)] grid-bg p-6">
       <div className="mb-12 text-center">
         <div className="inline-flex items-center gap-2 mb-3">
           <Laptop className="w-6 h-6 text-omni animate-spin-slow" />
-          <h2 className="text-2xl font-display font-bold text-white md:text-4xl text-glow">My Web Projects</h2>
+          <h2 className="text-2xl font-display font-bold text-[var(--text-primary)] md:text-4xl text-glow">My Web Projects</h2>
           <Camera className="w-6 h-6 text-omni/70 animate-bounce-slow" />
         </div>
-        <p className="text-emerald-100/60">Some of my best web development work</p>
+        <p className="text-[var(--text-secondary)]">Some of my best web development work</p>
         <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 mb-6 mt-4 px-4 py-2 rounded-lg text-omni border border-omni/30 bg-black/40 hover:border-omni hover:shadow-glow-sm transition-all duration-300">
           <ArrowLeft className="w-4 h-4" /> Go Back
         </button>
@@ -70,10 +70,10 @@ const WebProjects = () => {
               <img src={project.image} alt={project.title} className="object-cover w-full h-full rounded-lg transition-transform duration-500 group-hover:scale-110" />
             </div>
 
-            <Card className={"relative xl:absolute right-0 top-0 lg:top-1/2 w-full xl:w-[45%] mt-4 lg:mt-0 transform xl:-translate-y-1/2 bg-black/70 backdrop-blur-sm border border-omni/25 rounded-xl transition-all duration-500 " + (hoveredId === project.id ? "md:translate-x-4 md:scale-105 shadow-glow border-omni/60" : "")}>
+            <Card className={"relative xl:absolute right-0 top-0 lg:top-1/2 w-full xl:w-[45%] mt-4 lg:mt-0 transform xl:-translate-y-1/2 glass-strong rounded-xl transition-all duration-500 " + (hoveredId === project.id ? "md:translate-x-4 md:scale-105 shadow-glow border-omni/60" : "")}>
               <CardHeader>
                 <CardTitle className="text-xl font-display font-bold text-omni md:text-2xl">{project.title}</CardTitle>
-                <CardDescription className="text-sm leading-relaxed text-emerald-100/60 md:text-base">{project.description}</CardDescription>
+                <CardDescription className="text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">{project.description}</CardDescription>
               </CardHeader>
 
               <CardContent>

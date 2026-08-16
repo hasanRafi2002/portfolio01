@@ -47,7 +47,7 @@ const skills = {
 };
 
 const CategoryCard = ({ title, skillList }) => (
-  <Card className="w-full border border-omni/20 bg-black/50 backdrop-blur-sm hover:border-omni/60 hover:shadow-glow transition-all duration-300">
+  <Card className="w-full">
     <CardHeader className="border-b border-omni/15">
       <CardTitle className="text-xl font-display font-bold text-omni tracking-wide">{title.replace("_", " ").toUpperCase()}</CardTitle>
     </CardHeader>
@@ -55,10 +55,10 @@ const CategoryCard = ({ title, skillList }) => (
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6">
         {skillList.map((skill, idx) => (
           <div key={idx} className="flex flex-col items-center text-center transition-all duration-300 rounded-xl hover:bg-omni/5 p-2 group">
-            <div className="w-14 h-14 mb-2 transition-transform duration-300 rounded-lg bg-black/60 border border-omni/20 flex items-center justify-center group-hover:scale-110 group-hover:border-omni/60 group-hover:shadow-glow-sm">
+            <div className="glass w-14 h-14 mb-2 transition-transform duration-300 rounded-lg flex items-center justify-center group-hover:scale-110">
               <img src={skill.icon} alt={skill.name} className="object-contain w-10 h-10" />
             </div>
-            <span className="text-sm font-medium text-emerald-100/70">{skill.name}</span>
+            <span className="text-sm font-medium text-[var(--text-secondary)]">{skill.name}</span>
           </div>
         ))}
       </div>
@@ -70,14 +70,14 @@ const Skills = () => {
   const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 
   return (
-    <div className="relative min-h-screen p-6 bg-black grid-bg">
+    <div className="relative min-h-screen p-6 bg-[var(--bg-primary)] grid-bg">
       <div className="relative max-w-6xl mx-auto">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} className="mb-12 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-display tracking-[0.2em] uppercase rounded-full border border-omni/40 bg-black/40 text-omni/90">
             <span className="w-1.5 h-1.5 rounded-full bg-omni animate-pulse" /> Skill Matrix
           </div>
-          <h1 className="mb-3 text-4xl font-display font-bold text-white text-glow">My Tech Skills</h1>
-          <p className="text-emerald-100/60">Exploring the tools and technologies that power my development journey</p>
+          <h1 className="mb-3 text-4xl font-display font-bold text-[var(--text-primary)] text-glow">My Tech Skills</h1>
+          <p className="text-[var(--text-secondary)]">Exploring the tools and technologies that power my development journey</p>
         </motion.div>
 
         <div className="grid gap-8">

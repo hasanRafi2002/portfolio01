@@ -124,7 +124,7 @@ const ProjectDetails = () => {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="flex items-center justify-center min-h-screen bg-[var(--bg-primary)]">
         <div className="w-16 h-16 border-4 border-omni/30 rounded-full border-t-omni animate-spin shadow-glow"></div>
       </div>
     );
@@ -132,7 +132,7 @@ const ProjectDetails = () => {
 
   if (!project) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-[var(--bg-primary)]">
         <h1 className="text-3xl font-display font-bold text-white">Project Not Found</h1>
         <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-lg text-omni border border-omni/30 bg-black/40 hover:border-omni hover:shadow-glow-sm transition-all duration-300">
           <ArrowLeft className="w-4 h-4" /> Go Back
@@ -148,7 +148,7 @@ const ProjectDetails = () => {
   ];
 
   return (
-    <div className="min-h-screen mt-8 bg-black grid-bg md:mt-0">
+    <div className="min-h-screen mt-8 bg-[var(--bg-primary)] grid-bg md:mt-0">
       <div className="container px-4 py-8 mx-auto max-w-7xl">
         <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-lg text-omni border border-omni/30 bg-black/40 hover:border-omni hover:shadow-glow-sm transition-all duration-300">
           <ArrowLeft className="w-4 h-4" /> Go Back
@@ -158,29 +158,29 @@ const ProjectDetails = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-black/80 z-10"></div>
           <img src={project.screenshots[currentImageIndex]} alt={project.title} className="object-cover w-full h-64 md:h-96" />
           <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
-            <h1 className="mb-2 text-3xl font-display font-bold text-white text-glow md:text-4xl lg:text-5xl">{project.title}</h1>
-            <p className="max-w-2xl text-emerald-100/70">{project.description}</p>
+            <h1 className="mb-2 text-3xl font-display font-bold text-[var(--text-primary)] text-glow md:text-4xl lg:text-5xl">{project.title}</h1>
+            <p className="max-w-2xl text-[var(--text-secondary)]">{project.description}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4 mt-8 lg:grid-cols-4">
-          <Card className="p-4 bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-            <CardContent className="flex items-center gap-3"><Users className="w-5 h-5 text-omni" /><div><p className="text-sm text-emerald-100/50">Team Size</p><p className="font-semibold text-white">{project.team}</p></div></CardContent>
+          <Card className="p-4">
+            <CardContent className="flex items-center gap-3"><Users className="w-5 h-5 text-omni" /><div><p className="text-sm text-[var(--text-secondary)]">Team Size</p><p className="font-semibold text-[var(--text-primary)]">{project.team}</p></div></CardContent>
           </Card>
-          <Card className="p-4 bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-            <CardContent className="flex items-center gap-3"><Clock className="w-5 h-5 text-omni" /><div><p className="text-sm text-emerald-100/50">Duration</p><p className="font-semibold text-white">{project.duration}</p></div></CardContent>
+          <Card className="p-4">
+            <CardContent className="flex items-center gap-3"><Clock className="w-5 h-5 text-omni" /><div><p className="text-sm text-[var(--text-secondary)]">Duration</p><p className="font-semibold text-[var(--text-primary)]">{project.duration}</p></div></CardContent>
           </Card>
-          <Card className="p-4 bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-            <CardContent className="flex items-center gap-3"><Star className="w-5 h-5 text-omni" /><div><p className="text-sm text-emerald-100/50">Status</p><p className="font-semibold text-white">{project.status}</p></div></CardContent>
+          <Card className="p-4">
+            <CardContent className="flex items-center gap-3"><Star className="w-5 h-5 text-omni" /><div><p className="text-sm text-[var(--text-secondary)]">Status</p><p className="font-semibold text-[var(--text-primary)]">{project.status}</p></div></CardContent>
           </Card>
-          <Card className="p-4 bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-            <CardContent className="flex items-center gap-3"><Calendar className="w-5 h-5 text-omni" /><div><p className="text-sm text-emerald-100/50">Last Update</p><p className="font-semibold text-white">{new Date(project.lastUpdate).toLocaleDateString()}</p></div></CardContent>
+          <Card className="p-4">
+            <CardContent className="flex items-center gap-3"><Calendar className="w-5 h-5 text-omni" /><div><p className="text-sm text-[var(--text-secondary)]">Last Update</p><p className="font-semibold text-[var(--text-primary)]">{new Date(project.lastUpdate).toLocaleDateString()}</p></div></CardContent>
           </Card>
         </div>
 
-        <div className="flex gap-4 mt-8 border-b border-omni/15">
+        <div className="flex gap-4 mt-8 border-b border-[var(--border)]">
           {tabs.map((tab) => (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={"px-4 py-2 -mb-px transition-colors font-display " + (activeTab === tab.id ? "border-b-2 border-omni text-omni" : "text-emerald-100/50 hover:text-omni")}>{tab.label}</button>
+            <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={"px-4 py-2 -mb-px transition-colors font-display " + (activeTab === tab.id ? "border-b-2 border-omni text-omni" : "text-[var(--text-secondary)] hover:text-omni")}>{tab.label}</button>
           ))}
         </div>
 
@@ -188,8 +188,8 @@ const ProjectDetails = () => {
           {activeTab === 'overview' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
               <div>
-                <h2 className="mb-4 text-2xl font-display font-bold text-white">Project Overview</h2>
-                <p className="text-emerald-100/60">{project.longDescription}</p>
+                <h2 className="mb-4 text-2xl font-display font-bold text-[var(--text-primary)]">Project Overview</h2>
+                <p className="text-[var(--text-secondary)]">{project.longDescription}</p>
               </div>
               <div>
                 <h3 className="mb-4 text-xl font-display font-semibold text-omni">Screenshots</h3>
@@ -204,11 +204,11 @@ const ProjectDetails = () => {
 
           {activeTab === 'features' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <h2 className="mb-6 text-2xl font-display font-bold text-white">Key Features</h2>
+              <h2 className="mb-6 text-2xl font-display font-bold text-[var(--text-primary)]">Key Features</h2>
               <div className="grid gap-4 md:grid-cols-2">
                 {project.features.map((feature, index) => (
-                  <Card key={index} className="p-4 bg-black/50 border border-omni/20 hover:border-omni/50 hover:shadow-glow-sm transition-all duration-300">
-                    <CardContent className="flex items-start gap-3"><MessageCircle className="w-5 h-5 mt-1 text-omni shrink-0" /><p className="text-emerald-100/70">{feature}</p></CardContent>
+                  <Card key={index} className="p-4">
+                    <CardContent className="flex items-start gap-3"><MessageCircle className="w-5 h-5 mt-1 text-omni shrink-0" /><p className="text-[var(--text-secondary)]">{feature}</p></CardContent>
                   </Card>
                 ))}
               </div>
@@ -218,7 +218,7 @@ const ProjectDetails = () => {
           {activeTab === 'technical' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
               <div>
-                <h2 className="mb-4 text-2xl font-display font-bold text-white">Tech Stack</h2>
+                <h2 className="mb-4 text-2xl font-display font-bold text-[var(--text-primary)]">Tech Stack</h2>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, index) => (
                     <span key={index} className="px-3 py-1 text-sm rounded-full border border-omni/25 text-omni/90 bg-omni/5">{tech}</span>
@@ -231,7 +231,7 @@ const ProjectDetails = () => {
 
         <div className="flex flex-col gap-4 mt-8 sm:flex-row">
           <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="neon-btn inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-display"><Globe className="w-5 h-5" /><span>Visit Live Site</span></a>
-          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-display bg-black/60 border border-omni/25 text-emerald-100/80 hover:border-omni hover:text-omni transition-all duration-300"><Github className="w-5 h-5" /><span>View Source Code</span></a>
+          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="glass glass-hover inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-display text-[var(--text-secondary)] hover:text-omni"><Github className="w-5 h-5" /><span>View Source Code</span></a>
         </div>
       </div>
     </div>

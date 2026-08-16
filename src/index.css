@@ -2,6 +2,47 @@
 
 @layer base {
   :root {
+    /* Semantic theme tokens — dark is the default, no class required */
+    --bg-primary: #061510;
+    --bg-secondary: #0a1f18;
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-hover: rgba(255, 255, 255, 0.07);
+    --text-primary: #eafff2;
+    --text-secondary: rgba(224, 255, 240, 0.65);
+    --accent: #39ff14;
+    --accent-secondary: #22d3ee;
+    --border: rgba(255, 255, 255, 0.10);
+    --glow: rgba(57, 255, 20, 0.35);
+    --shadow: rgba(0, 0, 0, 0.45);
+  }
+
+  html.light {
+    --bg-primary: #eef7f3;
+    --bg-secondary: #e2f2ec;
+    --surface: rgba(255, 255, 255, 0.55);
+    --surface-hover: rgba(255, 255, 255, 0.78);
+    --text-primary: #0b241c;
+    --text-secondary: rgba(11, 36, 28, 0.65);
+    --accent: #0d9d4e;
+    --accent-secondary: #0891b2;
+    --border: rgba(13, 60, 45, 0.14);
+    --glow: rgba(13, 157, 78, 0.25);
+    --shadow: rgba(20, 60, 45, 0.14);
+
+    /* Glass tokens re-tuned for light surfaces */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-bg-strong: rgba(255, 255, 255, 0.65);
+    --glass-bg-subtle: rgba(255, 255, 255, 0.30);
+    --glass-border: rgba(13, 60, 45, 0.12);
+    --glass-border-bright: rgba(13, 157, 78, 0.35);
+    --glass-highlight: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px rgba(20, 60, 45, 0.12);
+  }
+}
+
+
+@layer base {
+  :root {
     --radius: 0.5rem;
     --omni-green: #39ff14;
     --omni-green-bright: #7cff45;
@@ -9,15 +50,30 @@
     --void-bg: #030503;
     --panel-bg: rgba(6, 12, 8, 0.72);
     --panel-border: rgba(57,255,20,0.28);
+
+    /* iOS-style glass tokens */
+    --glass-bg: rgba(20, 30, 24, 0.42);
+    --glass-bg-strong: rgba(14, 22, 18, 0.62);
+    --glass-bg-subtle: rgba(20, 30, 24, 0.22);
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --glass-border-bright: rgba(57, 255, 20, 0.35);
+    --glass-highlight: rgba(255, 255, 255, 0.06);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    --glass-blur: 20px;
+    --glass-blur-strong: 32px;
+    --glass-saturate: 180%;
   }
 
   html {
-    background: var(--void-bg);
+    background: var(--bg-primary);
+    transition: background-color 0.4s ease;
   }
 
   body {
-    background: var(--void-bg);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     font-family: 'Rajdhani', sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   ::selection {
@@ -219,4 +275,163 @@
 @keyframes particle-orbit {
   from { transform: rotate(0deg) translateX(185px) rotate(0deg); }
   to { transform: rotate(360deg) translateX(185px) rotate(-360deg); }
+}
+
+@layer utilities {
+  /* ============================
+     iOS-STYLE GLASS SYSTEM
+     ============================ */
+
+  .glass {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+    position: relative;
+  }
+
+  .glass-strong {
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+  }
+
+  .glass-subtle {
+    background: var(--glass-bg-subtle);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Thin top-edge sheen, like iOS sheets/cards */
+  .glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0) 40%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glass-nav {
+    background: rgba(8, 14, 10, 0.55);
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));
+    backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-saturate));
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .glass-border-glow {
+    border-color: var(--glass-border-bright);
+    box-shadow: var(--glass-shadow), 0 0 0 1px rgba(57,255,20,0.12), 0 0 24px rgba(57,255,20,0.10);
+  }
+
+  .glass-hover {
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+  }
+  .glass-hover:hover {
+    background: var(--glass-bg-strong);
+    border-color: var(--glass-border-bright);
+    box-shadow: var(--glass-shadow), 0 0 26px rgba(57,255,20,0.18);
+    transform: translateY(-2px);
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass, .glass-strong, .glass-subtle, .glass-nav {
+      background: rgba(10, 16, 12, 0.9);
+    }
+  }
+}
+
+
+/* =========================================================
+   CUSTOM CURSOR
+   ========================================================= */
+
+/* Only hide the native cursor once JS confirms fine-pointer + motion is OK,
+   so keyboard/touch/reduced-motion users always keep normal cursor behavior. */
+html.custom-cursor-active,
+html.custom-cursor-active * {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
+  border-radius: 9999px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent), 0 0 16px var(--glow);
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+  will-change: transform;
+}
+
+.cursor-dot-click {
+  transform-origin: center;
+  animation: cursor-pulse 0.35s ease-out;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  margin-left: -17px;
+  margin-top: -17px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--glass-border-bright);
+  background: rgba(57, 255, 20, 0.04);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease,
+    border-color 0.25s ease, background 0.25s ease, opacity 0.2s ease;
+  will-change: transform;
+}
+
+.cursor-ring-hover {
+  width: 54px;
+  height: 54px;
+  margin-left: -27px;
+  margin-top: -27px;
+  border-color: var(--accent);
+  background: rgba(57, 255, 20, 0.08);
+  box-shadow: 0 0 22px var(--glow);
+}
+
+.cursor-ring-click {
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+}
+
+@keyframes cursor-pulse {
+  0% { box-shadow: 0 0 8px var(--accent), 0 0 16px var(--glow); }
+  50% { box-shadow: 0 0 4px var(--accent), 0 0 30px var(--glow); }
+  100% { box-shadow: 0 0 8px var(--accent), 0 0 16px var(--glow); }
+}
+
+@media (pointer: coarse) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: auto !important;
+  }
+  .cursor-dot, .cursor-ring {
+    display: none;
+  }
 }

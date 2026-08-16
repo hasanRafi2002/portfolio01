@@ -4,7 +4,7 @@ import { Zap } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black border-t border-omni/20 overflow-hidden grid-bg">
+    <footer className="relative bg-[var(--bg-primary)] text-[var(--text-primary)] border-t border-[var(--border)] overflow-hidden grid-bg">
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-omni to-transparent shadow-glow" />
       <div className="absolute inset-0 pointer-events-none opacity-30 scan-overlay" />
 

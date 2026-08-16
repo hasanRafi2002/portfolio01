@@ -37,13 +37,13 @@ const PostCard = ({ title, date, excerpt, content }) => {
 
   return (
     <>
-      <Card className="w-full h-full border border-omni/20 bg-black/50 hover:border-omni/60 hover:shadow-glow transition-all duration-300">
+      <Card className="w-full h-full">
         <CardHeader className="border-b border-omni/15">
           <CardTitle className="text-xl font-display font-bold text-omni">{title}</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="mb-4 text-sm text-emerald-100/40 font-mono">{date}</div>
-          <p className="mb-4 text-emerald-100/70">{excerpt}</p>
+          <div className="mb-4 text-sm text-[var(--text-secondary)] opacity-70 font-mono">{date}</div>
+          <p className="mb-4 text-[var(--text-secondary)]">{excerpt}</p>
           <button onClick={openModal} className="text-omni hover:text-omni-bright transition-colors font-display font-semibold">Read more →</button>
         </CardContent>
       </Card>
@@ -51,8 +51,8 @@ const PostCard = ({ title, date, excerpt, content }) => {
         <Modal onClose={closeModal}>
           <div className="p-6">
             <h2 className="mb-4 text-2xl font-display font-bold text-omni">{title}</h2>
-            <div className="mb-4 text-sm text-emerald-100/40 font-mono">{date}</div>
-            <p className="text-emerald-100/70 whitespace-pre-line">{content}</p>
+            <div className="mb-4 text-sm text-[var(--text-secondary)] opacity-70 font-mono">{date}</div>
+            <p className="text-[var(--text-secondary)] whitespace-pre-line">{content}</p>
           </div>
         </Modal>
       )}
@@ -64,14 +64,14 @@ const Blog = () => {
   const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 
   return (
-    <div className="relative min-h-screen p-6 bg-black grid-bg">
+    <div className="relative min-h-screen p-6 bg-[var(--bg-primary)] grid-bg">
       <div className="relative max-w-6xl mx-auto">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={fadeUp} className="mb-12 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-display tracking-[0.2em] uppercase rounded-full border border-omni/40 bg-black/40 text-omni/90">
             <span className="w-1.5 h-1.5 rounded-full bg-omni animate-pulse" /> Data Log
           </div>
-          <h1 className="mb-4 text-4xl font-display font-bold text-white text-glow">My iOS Blog</h1>
-          <p className="text-emerald-100/60">Sharing my iOS projects, backend work, and what inspires me</p>
+          <h1 className="mb-4 text-4xl font-display font-bold text-[var(--text-primary)] text-glow">My iOS Blog</h1>
+          <p className="text-[var(--text-secondary)]">Sharing my iOS projects, backend work, and what inspires me</p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">

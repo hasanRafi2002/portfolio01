@@ -52,10 +52,10 @@ const Home = () => {
   const fadeUp = { hidden: { opacity: 0, y: reduceMotion ? 0 : 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } };
 
   return (
-    <div ref={heroRef} className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-[#030503]">
+    <div ref={heroRef} className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-[var(--bg-primary)]">
 
       <div className="absolute inset-0 overflow-hidden grid-bg">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#040a05] to-black" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-primary)] via-[var(--bg-secondary)] to-[var(--bg-primary)]" />
         <div className="absolute inset-0 pointer-events-none">
           <div className="energy-cloud energy-cloud-one" />
           <div className="energy-cloud energy-cloud-two" />
