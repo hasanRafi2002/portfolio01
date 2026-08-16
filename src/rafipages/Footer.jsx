@@ -1,67 +1,47 @@
-
-
-
 import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter, FaHeart } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { Zap } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-b from-purple-50 to-blue-100 dark:from-gray-900 dark:to-gray-800">
-      {/* Decorative Top Border */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500"></div>
+    <footer className="relative bg-black border-t border-omni/20 overflow-hidden grid-bg">
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-omni to-transparent shadow-glow" />
+      <div className="absolute inset-0 pointer-events-none opacity-30 scan-overlay" />
 
-      <div className="container px-4 py-12 mx-auto">
-        {/* Navigation Links */}
+      <div className="container relative px-4 py-12 mx-auto">
         <nav className="mb-8">
-          <ul className="flex flex-wrap justify-center gap-8 font-medium text-gray-600 dark:text-gray-300">
-            <li><a href="#home" className="hover:text-teal-500 dark:hover:text-teal-400">Home</a></li>
-            <li><a href="#about" className="hover:text-teal-500 dark:hover:text-teal-400">About</a></li>
-            <li><a href="#skills" className="hover:text-teal-500 dark:hover:text-teal-400">Skills</a></li>
-            <li><a href="#projects" className="hover:text-teal-500 dark:hover:text-teal-400">Projects</a></li>
-            <li><a href="#contact" className="hover:text-teal-500 dark:hover:text-teal-400">Contact</a></li>
+          <ul className="flex flex-wrap justify-center gap-8 font-display text-sm tracking-wider uppercase text-emerald-100/60">
+            <li><a href="#home" className="hover:text-omni transition-colors">Home</a></li>
+            <li><a href="#about" className="hover:text-omni transition-colors">About</a></li>
+            <li><a href="#skills" className="hover:text-omni transition-colors">Skills</a></li>
+            <li><a href="#projects" className="hover:text-omni transition-colors">Projects</a></li>
+            <li><a href="#contact" className="hover:text-omni transition-colors">Contact</a></li>
           </ul>
         </nav>
 
-        {/* Social Icons */}
         <div className="flex justify-center gap-6 mb-8">
-          <a 
-            href="https://github.com/hasanRafi2002" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            aria-label="GitHub Profile"
-            className="p-3 transition-colors bg-gray-200 rounded-lg dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
-          >
-            <FaGithub className="text-xl text-gray-700 dark:text-gray-300" />
+          <a href="https://github.com/hasanRafi2002" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"
+            className="p-3 transition-all bg-black/50 rounded-lg border border-omni/25 hover:border-omni hover:shadow-glow">
+            <FaGithub className="text-xl text-emerald-100/70 hover:text-omni transition-colors" />
           </a>
-          <a 
-            href="https://www.linkedin.com/in/serock01/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            aria-label="LinkedIn Profile"
-            className="p-3 transition-colors rounded-lg bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-800/30"
-          >
-            <FaLinkedin className="text-xl text-blue-500" />
+          <a href="https://www.linkedin.com/in/serock01/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"
+            className="p-3 transition-all bg-black/50 rounded-lg border border-omni/25 hover:border-omni hover:shadow-glow">
+            <FaLinkedin className="text-xl text-emerald-100/70 hover:text-omni transition-colors" />
           </a>
-          <a 
-            href="https://x.com/rafi_hasan_03" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            aria-label="Twitter Profile"
-            className="p-3 transition-colors rounded-lg bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-800/30"
-          >
-            <FaTwitter className="text-xl text-blue-400" />
+          <a href="https://x.com/rafi_hasan_03" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile"
+            className="p-3 transition-all bg-black/50 rounded-lg border border-omni/25 hover:border-omni hover:shadow-glow">
+            <FaTwitter className="text-xl text-emerald-100/70 hover:text-omni transition-colors" />
           </a>
         </div>
 
-        {/* Copyright & Role */}
         <div className="text-center">
-          <p className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-            Made with <FaHeart className="text-red-500 animate-pulse" /> by Md Tawhid Hasan Rafi
+          <p className="flex items-center justify-center gap-2 text-sm text-emerald-100/60 font-display tracking-wide">
+            Built with <Zap className="w-4 h-4 text-omni animate-pulse" fill="currentColor" /> by Md Tawhid Hasan Rafi
           </p>
-          <p className="mt-1 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <p className="mt-1 text-sm font-semibold text-omni/80 tracking-widest uppercase font-display">
             iOS Software Engineer
           </p>
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-500">
+          <p className="mt-2 text-xs text-emerald-100/30 font-display">
             &copy; {new Date().getFullYear()} All Rights Reserved.
           </p>
         </div>
