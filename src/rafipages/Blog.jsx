@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import Modal from './Modal';
+import useTilt3D from "@/hooks/useTilt3D";
 
 const posts = [
   {
@@ -31,13 +32,14 @@ const posts = [
 ];
 
 const PostCard = ({ title, date, excerpt, content }) => {
+  const tilt = useTilt3D({ max: 6, scale: 1.02 });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   return (
     <>
-      <Card className="w-full h-full">
+      <Card ref={tilt.ref} onMouseMove={tilt.onMouseMove} onMouseLeave={tilt.onMouseLeave} style={tilt.style} className="w-full h-full">
         <CardHeader className="border-b border-omni/15">
           <CardTitle className="text-xl font-display font-bold text-omni">{title}</CardTitle>
         </CardHeader>

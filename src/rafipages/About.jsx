@@ -30,7 +30,7 @@ const AnimatedAboutMe = () => {
 
             <div className="space-y-6">
               <p className="leading-relaxed text-[var(--text-secondary)]">
-                I'm a passionate <span className="font-semibold text-omni">iOS Software Engineer</span> and <span className="font-semibold text-white">Software Engineering student</span> at Daffodil International University.
+                I'm a passionate <span className="font-semibold text-omni">iOS Software Engineer</span> and <span className="font-semibold text-omni">Software Engineering student</span> at Daffodil International University.
                 I build performant iOS applications using <span className="font-semibold text-omni">Swift, UIKit/SwiftUI, MVVM, and Firebase</span>.
               </p>
               <p className="leading-relaxed text-[var(--text-secondary)]">

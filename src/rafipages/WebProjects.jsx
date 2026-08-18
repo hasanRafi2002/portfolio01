@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { Laptop, Camera, ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from "@/components/ui/card";
+import useTilt3D from "@/hooks/useTilt3D";
 
 const webProjects = [
   {
@@ -46,6 +47,7 @@ const webProjects = [
 const WebProjects = () => {
   const navigate = useNavigate();
   const [hoveredId, setHoveredId] = useState(null);
+  const tilt = useTilt3D({ max: 6, scale: 1.02 });
   const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 
   return (
@@ -66,8 +68,8 @@ const WebProjects = () => {
         {webProjects.map((project, i) => (
           <motion.div key={project.id} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} transition={{ delay: i * 0.05 }} className="relative transition-all duration-500 ease-out group" onMouseEnter={() => setHoveredId(project.id)} onMouseLeave={() => setHoveredId(null)}>
 
-            <div className={"relative w-full lg:w-[75%] h-[250px] lg:h-[400px] rounded-xl overflow-hidden p-[2px] bg-gradient-to-r from-omni-dim via-omni to-omni-dim transition-all duration-500 transform " + (hoveredId === project.id ? "md:scale-105 shadow-glow" : "")}>
-              <img src={project.image} alt={project.title} className="object-cover w-full h-full rounded-lg transition-transform duration-500 group-hover:scale-110" />
+            <div ref={tilt.ref} onMouseMove={tilt.onMouseMove} onMouseLeave={tilt.onMouseLeave} style={tilt.style} className={"relative w-full lg:w-[75%] h-[250px] lg:h-[400px] rounded-xl overflow-hidden p-[2px] bg-gradient-to-r from-omni-dim via-omni to-omni-dim transition-all duration-500 transform " + (hoveredId === project.id ? "md:scale-105 shadow-glow" : "")}>
+              <img src={project.image} alt={project.title} ref={tilt.ref} onMouseMove={tilt.onMouseMove} onMouseLeave={tilt.onMouseLeave} className="object-cover w-full h-full rounded-lg transition-transform duration-500 group-hover:scale-110" />
             </div>
 
             <Card className={"relative xl:absolute right-0 top-0 lg:top-1/2 w-full xl:w-[45%] mt-4 lg:mt-0 transform xl:-translate-y-1/2 glass-strong rounded-xl transition-all duration-500 " + (hoveredId === project.id ? "md:translate-x-4 md:scale-105 shadow-glow border-omni/60" : "")}>

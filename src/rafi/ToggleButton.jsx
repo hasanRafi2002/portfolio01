@@ -2,7 +2,10 @@ import React from 'react';
 
 const ToggleButton = ({ toggleNav }) => {
   return (
-    <button onClick={toggleNav} className="absolute p-2 text-white bg-gray-700 rounded top-4 right-4 ">
+    <button
+      onClick={toggleNav}
+      className="absolute p-2 rounded-lg top-4 right-4 glass glass-hover text-[var(--text-primary)]"
+    >
       Toggle
     </button>
   );

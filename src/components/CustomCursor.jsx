@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 /**
  * Premium iOS/futuristic custom cursor.
@@ -81,7 +82,7 @@ export default function CustomCursor() {
 
   if (!enabled) return null;
 
-  return (
+  return createPortal(
     <>
       <div
         ref={dotRef}
@@ -99,6 +100,7 @@ export default function CustomCursor() {
           (clicking ? " cursor-ring-click" : "")
         }
       />
-    </>
+    </>,
+    document.body
   );
 }

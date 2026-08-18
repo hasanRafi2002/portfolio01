@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Github, Clock, Calendar, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import useTilt3D from "@/hooks/useTilt3D";
 
 const iosProjects = [
   {
@@ -50,6 +51,7 @@ const IOSProjectDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const project = iosProjects.find((p) => p.id === Number(id));
+  const tilt = useTilt3D({ max: 5, scale: 1.015 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -82,7 +84,7 @@ const IOSProjectDetails = () => {
           <ArrowLeft className="w-4 h-4" /> Go Back
         </button>
 
-        <div className="overflow-hidden rounded-xl border border-omni/25 shadow-glow">
+        <div ref={tilt.ref} onMouseMove={tilt.onMouseMove} onMouseLeave={tilt.onMouseLeave} style={tilt.style} className="overflow-hidden rounded-xl border border-omni/25 shadow-glow">
           <img src={project.screenshots[0]} alt={project.title} className="object-cover w-full h-64 md:h-96" />
         </div>
 

@@ -5,6 +5,7 @@ import {
   ArrowLeft, Globe, Github, Users, Calendar, Clock, Star, MessageCircle
 } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
+import useTilt3D from "@/hooks/useTilt3D";
 
 const projects = [
   {
@@ -116,6 +117,7 @@ const ProjectDetails = () => {
   const project = projects.find((p) => p.id === parseInt(id));
   const [activeTab, setActiveTab] = useState('overview');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const tilt = useTilt3D({ max: 5, scale: 1.015 });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -154,7 +156,7 @@ const ProjectDetails = () => {
           <ArrowLeft className="w-4 h-4" /> Go Back
         </button>
 
-        <div className="relative overflow-hidden rounded-xl border border-omni/25 shadow-glow">
+        <div ref={tilt.ref} onMouseMove={tilt.onMouseMove} onMouseLeave={tilt.onMouseLeave} style={tilt.style} className="relative overflow-hidden rounded-xl border border-omni/25 shadow-glow">
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-black/80 z-10"></div>
           <img src={project.screenshots[currentImageIndex]} alt={project.title} className="object-cover w-full h-64 md:h-96" />
           <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
